@@ -16,6 +16,7 @@ import ContactCard from './components/ContactCard';
 import ContactForm from './components/ContactForm';
 import Kmodal from './components/Kmodal';
 
+
 const App = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -106,7 +107,6 @@ const App = () => {
       </Kmodal>
       <Box width={{ sm: '100%', md: '80%', xl: '50%' }} mx="auto">
         <Flex p="4" justify="center" align="center">
-          <Image src="/banner.jpg" w="130px" h="100px" />
           <Heading as="h1" textTransform="uppercase">
             Contact List
           </Heading>
