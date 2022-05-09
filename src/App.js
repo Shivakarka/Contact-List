@@ -9,6 +9,7 @@ import {
   addContactonServer,
   getContactsfromServer,
   deleteContactOnServer,
+  updateContactOnServer,
 } from './components/network';
 
 import ContactCard from './components/ContactCard';
@@ -66,15 +67,16 @@ const App = () => {
   };
 
   const updateContact = async (name, email, phone, id) => {
-    // as its a dummy api , I have commented this api request to handle error
-    //  const data = await updateContactOnServer(id, name,email,phone);
+    // as its a dummy api , the below data output will be undefined on updation of newly added contacts
+     const data = await updateContactOnServer(id, name,email,phone);
+    //  console.log(data)
 
     setContacts(prev => [
       ...contacts.filter(contact => contact.id !== id),
       { name, email, phone, id },
     ]);
 
-    //in real api
+    //In a real api , the above code should be
     // {name:data.name,email:data.email,phone:data.phone,id}
   };
 
