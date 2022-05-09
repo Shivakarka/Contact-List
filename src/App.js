@@ -1,7 +1,6 @@
 import { Button } from '@chakra-ui/button';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { AddIcon, Search2Icon } from '@chakra-ui/icons';
-import { Image } from '@chakra-ui/image';
 import { Input, InputGroup, InputLeftElement } from '@chakra-ui/input';
 import { v4 as uuidv4 } from 'uuid';
 import { Heading, Flex, Box } from '@chakra-ui/layout';
@@ -16,7 +15,6 @@ import ContactCard from './components/ContactCard';
 import ContactForm from './components/ContactForm';
 import Kmodal from './components/Kmodal';
 
-
 const App = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -28,16 +26,22 @@ const App = () => {
     fetchContacts();
   }, []);
 
+  //below isOpen,onOpen,onClose is used for the actions of modal
+
   const {
     isOpen: isOpenEdit,
     onOpen: onOpenEdit,
     onClose: onCloseEdit,
   } = useDisclosure();
+
   const [searchData, setSearchData] = useState('');
   const [contacts, setContacts] = useState([]);
   const [contactId, setContactId] = useState();
 
   const addNewContact = async (name, email, phone, id) => {
+    //the below if conditions handles if any duplicate contacts exists
+    //or any input field is empty. Only then a new contact can be added
+
     if (
       contacts.findIndex(contact => contact.email === email) === -1 &&
       email !== '' &&
@@ -81,6 +85,8 @@ const App = () => {
       setContacts(prev => [...contacts.filter(contact => contact.id !== id)]);
     }
   };
+
+  //used in updating a contact by finding the id
   let selectContact = contacts.find(contact => contact.id === contactId);
 
   return (

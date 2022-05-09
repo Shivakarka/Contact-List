@@ -14,6 +14,9 @@ function ContactForm({ addNewContact, onClose, contact, updateContact }) {
   const [email, setEmail] = useState(contact ? contact.email : '');
   const [phone, setPhone] = useState(contact ? contact.phone : '');
 
+  //the below onsubmit function checks if contact exists 
+  //and does the update/add contact functionality
+
   function onSubmit() {
     if (contact) {
       updateContact(name, email, phone, contact.id);
@@ -23,7 +26,8 @@ function ContactForm({ addNewContact, onClose, contact, updateContact }) {
       onClose();
     }
   }
-
+   
+  //the below three variables are used to display error message below input if any field is empty
   const isEmailError = email === '';
   const isNameError = name === '';
   const isPhoneError = phone === '';

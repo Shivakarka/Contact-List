@@ -8,6 +8,8 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 
+//this component is the template of modal in chakra ui, which has children prop as its content
+
 function Kmodal({ isOpen, onClose, onOpen, children, title }) {
   return (
     <>
